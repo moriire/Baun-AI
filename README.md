@@ -72,12 +72,6 @@ Baun AI Tutor is a component of Baun Eduvault, an educational device designed fo
 
    The app will be running on `http://localhost:5173`.
 
-2. For building the app for production, run:
-
-   ```bash
-   npm run build
-   ```
-
 ## Pages
 
 ### 1. Login Page
