@@ -5,11 +5,9 @@ Baun AI Tutor is a component of Baun Eduvault, an educational device designed fo
 ## Table of Contents
 - [Features](#features)
 - [Screenshots](#screenshots)
-- [Tech Stack](#tech-stack)
 - [Installation](#installation)
 - [Running the Application](#running-the-application)
 - [Pages](#pages)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Features
