@@ -47,13 +47,13 @@ Baun AI Tutor is a component of Baun Eduvault, an educational device designed fo
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/baun-ai.git
+   git clone https://github.com/your-username/Baun-AI.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd baun-ai
+   cd Baun-AI
    ```
 
 3. Install dependencies:
