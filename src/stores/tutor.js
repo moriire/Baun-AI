@@ -23,21 +23,21 @@ export const useAITutorStore = defineStore('tutor', () => {
     const user = JSON.parse(localStorage.getItem("user"))
     const getUserChat = async () =>{
       try {
-        const res = await axiosInstance.get("api/tutor/")
+        const res = await axiosInstance.get("ai/tutor/")
         chatLists.value = res.data
       } catch(e){
         console.log(e)
       }
     };
-    const logUserChat = () =>{
+    const logUserChat = async () =>{
       try {
-        const res = axiosInstance.post("api/tutor/", {
+        const res = await axiosInstance.post("ai/tutor/", {
           user: user.id,
           subject: subject.subject,
           prompt: prompt.value,
           response: response.value
         });
-        getUserChat();
+      await getUserChat()
       } catch(e){
         console.log(e)
       }
@@ -86,7 +86,6 @@ console.log(msg.value)
       if (done){
         //console.log("completed")
         break;
-        logUserChat();
       };
 
       const messages = new TextDecoder().decode(value);
@@ -99,6 +98,7 @@ console.log(msg.value)
         disable.value = false
 	msg.value.push({"role": "assistant", "content": response.value })
 	console.log(msg.value)
+  logUserChat();
    }
 };
 

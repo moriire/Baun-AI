@@ -2,7 +2,7 @@
 import axiosInstance from "@/axios";
 import { useAITutorStore } from "@/stores/tutor";
 import { onMounted } from "vue";
-import { RouterView } from "vue-router";
+import { RouterView, RouterLink } from "vue-router";
 const tutor  = useAITutorStore()
 const user = JSON.parse(localStorage.getItem("user")).username
 const logoutUser = () => {
@@ -55,7 +55,10 @@ onMounted(()=>{
     <div class="row .justify-content-center .max-vh-100">
       <div class="col-lg-3 d-none d-lg-block bg-warning">
         <div class="border border-0 border-bottom py-2 ps-2 fs-5" v-for="chat in tutor.chatLists">
-          {{ chat.prompt }}
+          <RouterLink class="btn btn-link-dark text-decoration-none" :to="{
+            name: 'tutor',
+            query: {chat: chat.id}
+          }">{{ chat.prompt }}</RouterLink>
         </div>
       </div>
       <div class="col-lg-9 p-4">

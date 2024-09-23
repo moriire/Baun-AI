@@ -1,6 +1,32 @@
 <script setup>
+import axiosInstance from '@/axios';
 import { useAITutorStore } from '@/stores/tutor';
+import { onMounted } from 'vue';
+import { useRoute, useRouter, onBeforeRouteUpdate } from 'vue-router';
+const route = useRoute()
+const router = useRouter()
 const tutor = useAITutorStore()
+//const currentChat = ref({})
+const getChatSingle = async (chatID) => {
+  try{
+    const res = await axiosInstance(`ai/tutor/${chatID}/`)
+    tutor.response = res.data.response
+  } catch(e){
+    console.log(e)
+  }
+}
+
+onBeforeRouteUpdate(async (to, from) => {
+  console.log(to+ " "+from)
+  if (to.query.chat){
+    await getChatSingle(to.query.chat)
+  } else {
+    tutor.response = ""
+  }
+})
+onMounted(()=>{
+  getChatSingle(route.query.chat)
+})
 </script>
 <template>
   <div class="row justify-content-center align-items-center " style="height: 70%;">
