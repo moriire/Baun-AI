@@ -45,9 +45,9 @@ onMounted(()=>{
             <li><a type="button" class="dropdown-item" @click="logoutUser">Logout</a></li>
           </ul>
         </li>
-        <li class="nav-item">
+        <!--li class="nav-item">
           <a class="nav-link" href="#">Theme</a>
-        </li>
+        </li-->
       </ul>
     </div>
   </nav>
