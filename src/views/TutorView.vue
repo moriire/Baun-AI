@@ -18,14 +18,17 @@ const getChatSingle = async (chatID) => {
 
 onBeforeRouteUpdate(async (to, from) => {
   console.log(to+ " "+from)
-  if (to.query.chat){
+  if (to.query.chat !=="undefined"){
     await getChatSingle(to.query.chat)
   } else {
     tutor.response = ""
   }
 })
 onMounted(()=>{
-  getChatSingle(route.query.chat)
+  router.isReady();
+  if (route.query.chat){
+    getChatSingle(route.query.chat)
+  }
 })
 </script>
 <template>

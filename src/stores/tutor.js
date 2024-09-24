@@ -2,7 +2,7 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import axiosInstance from '@/axios'
 export const useAITutorStore = defineStore('tutor', () => {
-  const count = ref(0)
+  const chatCcount = computed(() => chatLists.value.length)
   const chatLists = ref([])
   const disable = ref(false)
     const prompt = ref('')
@@ -134,6 +134,7 @@ return {
       copyQ,
         fetchData,
         chatLists,
+        chatCcount,
         getUserChat
 }
 })
