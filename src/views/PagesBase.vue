@@ -3,9 +3,15 @@ import axiosInstance from "@/axios";
 import { useAITutorStore } from "@/stores/tutor";
 import { Modal } from "bootstrap";
 import { onMounted, ref } from "vue";
-import { RouterView, RouterLink } from "vue-router";
+import { RouterView, RouterLink, useRouter } from "vue-router";
+const router = useRouter();
 const tutor  = useAITutorStore();
 const staticBackdrop = ref(null);
+
+const genQuiz = () => {
+  router.push("/quiz")
+}
+
 const user = JSON.parse(localStorage.getItem("user")).username
 const logoutUser = () => {
   try {
@@ -26,9 +32,9 @@ onMounted(()=>{
 })
 </script>
 <template>
-  <nav class="px-2 navbar navbar-expand-lg bg-warning border border-0 border-bottom border-dark sticky-top">
+   <nav class="px-2 navbar navbar-expand-lg bg-warning border border-0 border-bottom border-dark sticky-top">
     <div class="container-fluid">
-      <h3 class="text-center">AI Tutor {{ tutor.chatCcount }}</h3>
+      <h3 class="text-center">AI Tutor</h3>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
         aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -38,6 +44,12 @@ onMounted(()=>{
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll " style="--bs-scroll-height: 100px;">
         <li class="nav-item">
           <RouterLink class="nav-link active" aria-current="page" to="/">Home</RouterLink>
+        </li>
+        <li class="nav-item">
+          <RouterLink class="nav-link active" aria-current="page" to="/quiz">Quiz</RouterLink>
+        </li>
+        <li class="nav-item">
+          <RouterLink class="nav-link active" aria-current="page" to="/">Dashboard</RouterLink>
         </li>
         <li class="nav-item dropdown dropstart ">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -90,7 +102,7 @@ onMounted(()=>{
       </div>
       <div class="modal-footer">
         <!--button type="button" class="btn btn-dark" data-bs-dismiss="modal">I'm not ready!!!</button-->
-        <button type="button" class="btn btn-warning">Start Quiz</button>
+        <button @click="genQuiz()" type="button" class="btn btn-warning">Start Quiz</button>
       </div>
     </div>
   </div>
